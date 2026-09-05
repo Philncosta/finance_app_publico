@@ -1,0 +1,18 @@
+# .gitattributes — como o Git trata o fim de linha
+# =============================================================================
+# Windows termina linha com CRLF; Linux e Mac, com LF. Sem uma regra, o Git
+# avisa a cada arquivo ("LF will be replaced by CRLF") e, pior, pode marcar um
+# arquivo como alterado só porque o fim de linha mudou — sujando o histórico
+# com mudanças que não são mudanças.
+#
+# `text=auto` resolve: guarda tudo com LF no repositório e entrega no formato
+# do sistema de quem baixar.
+* text=auto
+
+# Os arquivos abaixo são BINÁRIOS. Marcar assim impede o Git de tentar
+# "consertar" o fim de linha dentro deles, o que os corromperia.
+*.xlsx  binary
+*.xlsm  binary
+*.db    binary
+*.zip   binary
+*.png   binary

@@ -1,0 +1,10 @@
+# Dependencias do Dashboard Financeiro
+# Instale com:  .venv\Scripts\python -m pip install -r requirements.txt
+
+streamlit>=1.40      # framework que transforma script Python em site
+pandas>=2.2          # tabelas em memoria (DataFrame)
+plotly>=5.24         # graficos interativos
+openpyxl>=3.1        # leitura do .xlsm na migracao e exportacao .xlsx
+numpy>=1.26          # calculos numericos (usado por pandas e pelo financiamento)
+yfinance>=0.2.40     # cotacoes de acoes/ETFs (B3 e EUA) - OPCIONAL:
+                     # o app funciona sem ela, so nao busca preco novo

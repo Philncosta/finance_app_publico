@@ -1,0 +1,72 @@
+# .gitignore — o que NÃO deve ser copiado nem versionado
+# =============================================================================
+# Este arquivo tem duas utilidades:
+#
+# 1. O repositório Git (criado em 2026-08-23) usa isto para saber o que ignorar.
+# 2. Como LISTA DE REFERÊNCIA: é exatamente o que você deve excluir ao copiar
+#    a pasta para a nuvem ou para outro computador.
+#
+# ATENÇÃO — ELE **NÃO** DEIXA O PROJETO SEGURO PARA UM REPOSITÓRIO PÚBLICO.
+#
+# O que ele exclui é o RECRIÁVEL e o GRANDE, não o SENSÍVEL. Continuam
+# versionados, de propósito, `arquivos_originais/` e `migracao/semente/` — que
+# são os seus extratos e os seus lançamentos, com nome de gente e valor.
+#
+# Isso é adequado num repositório PRIVADO, onde eles funcionam como histórico.
+# Para publicar, veja o aviso no topo do README.
+#
+# A regra por trás de tudo aqui: não copie o que é RECRIÁVEL nem o que é
+# GRANDE. Copie o que você não consegue refazer.
+# =============================================================================
+
+# --- O ambiente Python -------------------------------------------------------
+# 427 MB de bibliotecas baixadas da internet. É recriável com um comando:
+#     python -m venv .venv
+#     .venv\Scripts\python -m pip install -r requirements.txt
+#
+# E, mais importante: ele guarda CAMINHOS ABSOLUTOS. Copiado para outra pasta
+# ou outro computador, simplesmente não funciona. Nunca vale a pena copiar.
+.venv/
+venv/
+env/
+
+# --- Arquivos temporários do Python ------------------------------------------
+# O Python compila cada .py para .pyc e guarda aqui, para carregar mais rápido
+# na próxima vez. É gerado sozinho e recriado sempre que preciso.
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- O banco de dados --------------------------------------------------------
+# ATENÇÃO: esta é a linha mais importante do arquivo, e a mais fácil de
+# entender errado.
+#
+# O banco é ignorado pelo Git porque ele MUDA A TODA HORA e é binário —
+# versionar traria conflito a cada importação, sem nenhum ganho.
+#
+# Isso NÃO quer dizer "não faça backup dele". Quer dizer: o backup dele é o
+# .zip que o app gera (Configurações → Backup), que vai para o OneDrive.
+# Ver docs/08_backup_e_nuvem.md.
+dados/financas.db
+!dados/financas.db
+dados/financas.db-wal
+dados/financas.db-shm
+dados/backups/
+
+# --- Configuração local ------------------------------------------------------
+# Usado pelas ferramentas de desenvolvimento, não faz parte do projeto.
+.claude/
+
+# --- Sistema operacional -----------------------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- O QUE **NÃO** ESTÁ IGNORADO (e por quê) ---------------------------------
+# arquivos_originais/   suas faturas e extratos originais. São pequenos e você
+#                       pode querer reimportar um dia — vale guardar.
+# migracao/semente/     o retrato da planilha no dia da migração. É histórico.
+# docs/                 a explicação do projeto.
+
+# lista de nomes para o publicar.py — nunca versionada
+nomes.txt
